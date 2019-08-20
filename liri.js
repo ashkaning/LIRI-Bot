@@ -18,9 +18,10 @@ var concertFunc = function (KeySearch) {
     axios.get(concertUrl).then(
         function (concertResponse) {
             for (var i in concertResponse.data) {
+                var timeConvert = moment(concertResponse.data[i].datetime).format('MM/DD/YYYY')
                 console.log("Venue Name: " + concertResponse.data[i].venue.name);
                 console.log("Locations: " + concertResponse.data[i].venue.city + " " + concertResponse.data[i].venue.city.country);
-                console.log("Date: " + concertResponse.data[i].datetime);
+                console.log("Date: " + timeConvert);
                 console.log('====================================');
             }
 
@@ -32,9 +33,10 @@ var concertFunc = function (KeySearch) {
 /////////////////////////////////////////
 var concert = function (concertResponse) {
     for (var i in concertResponse.data) {
+        var timeConvert = moment(concertResponse.data[i].datetime).format('MM/DD/YYYY')
         console.log("Venue Name: " + concertResponse.data[i].venue.name);
         console.log("Locations: " + concertResponse.data[i].venue.city + " " + concertResponse.data[i].venue.city.country);
-        console.log("Date: " + concertResponse.data[i].datetime);
+        console.log("Date: " + timeConvert);
         console.log('====================================');
     }
 }
@@ -59,7 +61,7 @@ var song = function (KeySearch) {
 ///////////////////////////////////////
 var movie = function (response) {
     console.log("Title: " + response.data.Title);
-    console.log("Title: " + response.data.Year);
+    console.log("Year: " + response.data.Year);
     console.log("Rating: " + response.data.Ratings[0].Value);
     console.log("Rotten Tomatoes Rating of the movie: " + response.data.Ratings[1].Value);
     console.log("Country where the movie was produced: " + response.data.Country);
